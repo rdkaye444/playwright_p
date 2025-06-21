@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playwright Test Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">Playwright Test Server</div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/forms" class="nav-link">Forms</a></li>
+                <li><a href="/modal" class="nav-link">Modals</a></li>
+                <li><a href="/dynamic/test1" class="nav-link">Dynamic Page 1</a></li>
+                <li><a href="/dynamic/test2" class="nav-link">Dynamic Page 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">Welcome to Playwright Testing</h1>
+            <p class="hero-subtitle">This page contains various UI elements for testing with Playwright</p>
+        </section>
+
+        <section class="content">
+            <!-- Buttons Section -->
+            <div class="card">
+                <h2 id="buttons-section">Buttons</h2>
+                <div class="button-group">
+                    <button id="primary-btn" class="btn btn-primary">Primary Button</button>
+                    <button id="secondary-btn" class="btn btn-secondary">Secondary Button</button>
+                    <button id="danger-btn" class="btn btn-danger">Danger Button</button>
+                    <button id="disabled-btn" class="btn btn-primary" disabled>Disabled Button</button>
+                    <button id="loading-btn" class="btn btn-primary">
+                        <span class="loading-spinner"></span>
+                        Loading Button
+                    </button>
+                </div>
+            </div>
+
+            <!-- Forms Section -->
+            <div class="card">
+                <h2 id="forms-section">Forms</h2>
+                <form id="test-form" class="form">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-input" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country" name="country" class="form-select">
+                            <option value="">Select a country</option>
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Interests</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="sports" class="checkbox">
+                                Sports
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="music" class="checkbox">
+                                Music
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="books" class="checkbox">
+                                Books
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male" class="radio">
+                                Male
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female" class="radio">
+                                Female
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="other" class="radio">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Enter your message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </form>
+            </div>
+
+            <!-- Tables Section -->
+            <div class="card">
+                <h2 id="tables-section">Data Tables</h2>
+                <table class="table" id="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-user-id="1">
+                            <td>1</td>
+                            <td>Alice Johnson</td>
+                            <td>alice@example.com</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary edit-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                        <tr data-user-id="2">
+                            <td>2</td>
+                            <td>Bob Smith</td>
+                            <td>bob@example.com</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary edit-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                        <tr data-user-id="3">
+                            <td>3</td>
+                            <td>Charlie Brown</td>
+                            <td>charlie@example.com</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary edit-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Alerts Section -->
+            <div class="card">
+                <h2 id="alerts-section">Alerts & Notifications</h2>
+                <div class="alert-group">
+                    <div id="success-alert" class="alert alert-success">
+                        <strong>Success!</strong> This is a success message.
+                        <button class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                    <div id="error-alert" class="alert alert-error">
+                        <strong>Error!</strong> This is an error message.
+                        <button class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                    <div id="warning-alert" class="alert alert-warning">
+                        <strong>Warning!</strong> This is a warning message.
+                        <button class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                    <div id="info-alert" class="alert alert-info">
+                        <strong>Info!</strong> This is an info message.
+                        <button class="alert-close" onclick="this.parentElement.style.display='none'">&times;</button>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="show-success" class="btn btn-success">Show Success</button>
+                    <button id="show-error" class="btn btn-danger">Show Error</button>
+                    <button id="show-warning" class="btn btn-warning">Show Warning</button>
+                    <button id="show-info" class="btn btn-info">Show Info</button>
+                </div>
+            </div>
+
+            <!-- Modals Section -->
+            <div class="card">
+                <h2 id="modals-section">Modals</h2>
+                <div class="button-group">
+                    <button id="open-modal" class="btn btn-primary">Open Modal</button>
+                    <button id="open-confirm" class="btn btn-warning">Open Confirm Dialog</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Section -->
+            <div class="card">
+                <h2 id="dynamic-section">Dynamic Content</h2>
+                <div class="button-group">
+                    <button id="load-content" class="btn btn-primary">Load Content</button>
+                    <button id="toggle-content" class="btn btn-secondary">Toggle Content</button>
+                </div>
+                <div id="dynamic-content" class="dynamic-content" style="display: none;">
+                    <p>This content was loaded dynamically!</p>
+                    <ul>
+                        <li>Dynamic item 1</li>
+                        <li>Dynamic item 2</li>
+                        <li>Dynamic item 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Search Section -->
+            <div class="card">
+                <h2 id="search-section">Search</h2>
+                <div class="search-container">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search...">
+                    <button id="search-btn" class="btn btn-primary">Search</button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Modal Title</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a modal dialog. You can put any content here.</p>
+                <form class="modal-form">
+                    <div class="form-group">
+                        <label for="modal-input" class="form-label">Modal Input</label>
+                        <input type="text" id="modal-input" class="form-input" placeholder="Enter text">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-modal">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Dialog -->
+    <div id="confirm-dialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-confirm">Cancel</button>
+                <button class="btn btn-danger" id="confirm-action">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html> 

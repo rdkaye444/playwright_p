@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - Playwright Test Server</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">Playwright Test Server</div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/forms" class="nav-link active">Forms</a></li>
+                <li><a href="/modal" class="nav-link">Modals</a></li>
+                <li><a href="/dynamic/test1" class="nav-link">Dynamic Page 1</a></li>
+                <li><a href="/dynamic/test2" class="nav-link">Dynamic Page 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">Forms Testing Page</h1>
+            <p class="hero-subtitle">Comprehensive form elements for Playwright testing</p>
+        </section>
+
+        <section class="content">
+            <!-- Registration Form -->
+            <div class="card">
+                <h2 id="registration-form">Registration Form</h2>
+                <form id="registration" class="form">
+                    <div class="form-group">
+                        <label for="reg-username" class="form-label">Username *</label>
+                        <input type="text" id="reg-username" name="username" class="form-input" placeholder="Enter username" required minlength="3">
+                        <small class="form-help">Must be at least 3 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email" class="form-label">Email *</label>
+                        <input type="email" id="reg-email" name="email" class="form-input" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password" class="form-label">Password *</label>
+                        <input type="password" id="reg-password" name="password" class="form-input" placeholder="Enter password" required minlength="8">
+                        <small class="form-help">Must be at least 8 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password" class="form-label">Confirm Password *</label>
+                        <input type="password" id="reg-confirm-password" name="confirm_password" class="form-input" placeholder="Confirm password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-age" class="form-label">Age</label>
+                        <input type="number" id="reg-age" name="age" class="form-input" placeholder="Enter age" min="13" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-birthdate" class="form-label">Birth Date</label>
+                        <input type="date" id="reg-birthdate" name="birthdate" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="reg-phone" name="phone" class="form-input" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-website" class="form-label">Website</label>
+                        <input type="url" id="reg-website" name="website" class="form-input" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-time" class="form-label">Preferred Time</label>
+                        <input type="time" id="reg-time" name="preferred_time" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-color" class="form-label">Favorite Color</label>
+                        <input type="color" id="reg-color" name="favorite_color" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-file" class="form-label">Profile Picture</label>
+                        <input type="file" id="reg-file" name="profile_picture" class="form-input" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-range" class="form-label">Experience Level</label>
+                        <input type="range" id="reg-range" name="experience" class="form-input" min="0" max="10" value="5">
+                        <small class="form-help">0 = Beginner, 10 = Expert</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="card">
+                <h2 id="contact-form">Contact Form</h2>
+                <form id="contact" class="form">
+                    <div class="form-group">
+                        <label for="contact-name" class="form-label">Full Name *</label>
+                        <input type="text" id="contact-name" name="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email" class="form-label">Email *</label>
+                        <input type="email" id="contact-email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject" class="form-label">Subject *</label>
+                        <select id="contact-subject" name="subject" class="form-select" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-priority" class="form-label">Priority</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="low" class="radio">
+                                Low
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="medium" class="radio" checked>
+                                Medium
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="high" class="radio">
+                                High
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message" class="form-label">Message *</label>
+                        <textarea id="contact-message" name="message" class="form-textarea" placeholder="Enter your message" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="newsletter" class="checkbox">
+                            Subscribe to newsletter
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" class="checkbox" required>
+                            I agree to the terms and conditions *
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="reset" class="btn btn-secondary">Reset Form</button>
+                </form>
+            </div>
+
+            <!-- Advanced Form -->
+            <div class="card">
+                <h2 id="advanced-form">Advanced Form</h2>
+                <form id="advanced" class="form">
+                    <div class="form-group">
+                        <label for="adv-multiselect" class="form-label">Multiple Selection</label>
+                        <select id="adv-multiselect" name="skills" class="form-select" multiple size="4">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                        </select>
+                        <small class="form-help">Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-datalist" class="form-label">Browser (with datalist)</label>
+                        <input type="text" id="adv-datalist" name="browser" class="form-input" list="browsers" placeholder="Select or type browser name">
+                        <datalist id="browsers">
+                            <option value="Chrome">
+                            <option value="Firefox">
+                            <option value="Safari">
+                            <option value="Edge">
+                            <option value="Opera">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-search" class="form-label">Search</label>
+                        <input type="search" id="adv-search" name="search" class="form-input" placeholder="Search...">
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-number" class="form-label">Quantity</label>
+                        <input type="number" id="adv-number" name="quantity" class="form-input" placeholder="Enter quantity" min="1" max="100" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-month" class="form-label">Month</label>
+                        <input type="month" id="adv-month" name="month" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-week" class="form-label">Week</label>
+                        <input type="week" id="adv-week" name="week" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="adv-datetime-local" class="form-label">Date and Time</label>
+                        <input type="datetime-local" id="adv-datetime-local" name="datetime" class="form-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Advanced Form</button>
+                </form>
+            </div>
+
+            <!-- Form Validation Demo -->
+            <div class="card">
+                <h2 id="validation-form">Form Validation Demo</h2>
+                <form id="validation" class="form">
+                    <div class="form-group">
+                        <label for="val-required" class="form-label">Required Field *</label>
+                        <input type="text" id="val-required" name="required" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="val-pattern" class="form-label">Pattern Match (3 letters)</label>
+                        <input type="text" id="val-pattern" name="pattern" class="form-input" pattern="[A-Za-z]{3}" placeholder="Enter exactly 3 letters">
+                    </div>
+                    <div class="form-group">
+                        <label for="val-minmax" class="form-label">Min/Max Length (5-10 chars)</label>
+                        <input type="text" id="val-minmax" name="minmax" class="form-input" minlength="5" maxlength="10" placeholder="5-10 characters">
+                    </div>
+                    <div class="form-group">
+                        <label for="val-number-range" class="form-label">Number Range (1-100)</label>
+                        <input type="number" id="val-number-range" name="number_range" class="form-input" min="1" max="100" placeholder="1-100">
+                    </div>
+                    <div class="form-group">
+                        <label for="val-email-custom" class="form-label">Custom Email</label>
+                        <input type="email" id="val-email-custom" name="email_custom" class="form-input" placeholder="Enter valid email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Validate Form</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+    <script>
+        // Additional form-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation feedback
+            const forms = ['registration', 'contact', 'advanced', 'validation'];
+            
+            forms.forEach(formId => {
+                const form = document.getElementById(formId);
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        showAlert('success', `${formId} form submitted successfully!`);
+                        console.log('Form data:', new FormData(form));
+                    });
+                }
+            });
+
+            // Password confirmation validation
+            const password = document.getElementById('reg-password');
+            const confirmPassword = document.getElementById('reg-confirm-password');
+            
+            if (password && confirmPassword) {
+                confirmPassword.addEventListener('input', function() {
+                    if (password.value !== confirmPassword.value) {
+                        confirmPassword.setCustomValidity('Passwords do not match');
+                    } else {
+                        confirmPassword.setCustomValidity('');
+                    }
+                });
+            }
+
+            // Range input display
+            const rangeInput = document.getElementById('reg-range');
+            if (rangeInput) {
+                rangeInput.addEventListener('input', function() {
+                    const helpText = this.parentElement.querySelector('.form-help');
+                    if (helpText) {
+                        helpText.textContent = `0 = Beginner, 10 = Expert (Current: ${this.value})`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals - Playwright Test Server</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">Playwright Test Server</div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/forms" class="nav-link">Forms</a></li>
+                <li><a href="/modal" class="nav-link active">Modals</a></li>
+                <li><a href="/dynamic/test1" class="nav-link">Dynamic Page 1</a></li>
+                <li><a href="/dynamic/test2" class="nav-link">Dynamic Page 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">Modal Testing Page</h1>
+            <p class="hero-subtitle">Various modal dialogs for Playwright testing</p>
+        </section>
+
+        <section class="content">
+            <!-- Basic Modals -->
+            <div class="card">
+                <h2 id="basic-modals">Basic Modals</h2>
+                <div class="button-group">
+                    <button id="simple-modal" class="btn btn-primary">Simple Modal</button>
+                    <button id="large-modal" class="btn btn-secondary">Large Modal</button>
+                    <button id="small-modal" class="btn btn-info">Small Modal</button>
+                    <button id="scrollable-modal" class="btn btn-warning">Scrollable Modal</button>
+                </div>
+            </div>
+
+            <!-- Confirmation Dialogs -->
+            <div class="card">
+                <h2 id="confirmation-dialogs">Confirmation Dialogs</h2>
+                <div class="button-group">
+                    <button id="confirm-delete" class="btn btn-danger">Confirm Delete</button>
+                    <button id="confirm-save" class="btn btn-success">Confirm Save</button>
+                    <button id="confirm-discard" class="btn btn-warning">Confirm Discard</button>
+                    <button id="confirm-custom" class="btn btn-primary">Custom Confirmation</button>
+                </div>
+            </div>
+
+            <!-- Form Modals -->
+            <div class="card">
+                <h2 id="form-modals">Form Modals</h2>
+                <div class="button-group">
+                    <button id="login-modal" class="btn btn-primary">Login Modal</button>
+                    <button id="signup-modal" class="btn btn-secondary">Signup Modal</button>
+                    <button id="settings-modal" class="btn btn-info">Settings Modal</button>
+                    <button id="profile-modal" class="btn btn-warning">Profile Modal</button>
+                </div>
+            </div>
+
+            <!-- Alert Modals -->
+            <div class="card">
+                <h2 id="alert-modals">Alert Modals</h2>
+                <div class="button-group">
+                    <button id="success-alert-modal" class="btn btn-success">Success Alert</button>
+                    <button id="error-alert-modal" class="btn btn-danger">Error Alert</button>
+                    <button id="warning-alert-modal" class="btn btn-warning">Warning Alert</button>
+                    <button id="info-alert-modal" class="btn btn-info">Info Alert</button>
+                </div>
+            </div>
+
+            <!-- Nested Modals -->
+            <div class="card">
+                <h2 id="nested-modals">Nested Modals</h2>
+                <div class="button-group">
+                    <button id="parent-modal" class="btn btn-primary">Parent Modal</button>
+                </div>
+            </div>
+
+            <!-- Modal with Dynamic Content -->
+            <div class="card">
+                <h2 id="dynamic-modals">Dynamic Content Modals</h2>
+                <div class="button-group">
+                    <button id="loading-modal" class="btn btn-primary">Loading Modal</button>
+                    <button id="api-modal" class="btn btn-secondary">API Data Modal</button>
+                    <button id="timer-modal" class="btn btn-info">Timer Modal</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Modal -->
+    <div id="simple-modal-dialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Simple Modal</h3>
+                <button class="modal-close" onclick="closeModal('simple-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a simple modal dialog with basic content.</p>
+                <p>You can close it by clicking the X button, clicking outside, or pressing Escape.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('simple-modal-dialog')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Large Modal -->
+    <div id="large-modal-dialog" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3>Large Modal</h3>
+                <button class="modal-close" onclick="closeModal('large-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a large modal dialog that demonstrates different sizing options.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <div>
+                        <h4>Left Column</h4>
+                        <p>This modal has a wider layout with two columns to test responsive behavior.</p>
+                        <ul>
+                            <li>Feature 1</li>
+                            <li>Feature 2</li>
+                            <li>Feature 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Right Column</h4>
+                        <p>This side contains additional information and controls.</p>
+                        <button class="btn btn-secondary">Action Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('large-modal-dialog')">Cancel</button>
+                <button class="btn btn-primary" onclick="closeModal('large-modal-dialog')">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Small Modal -->
+    <div id="small-modal-dialog" class="modal">
+        <div class="modal-content" style="max-width: 300px;">
+            <div class="modal-header">
+                <h3>Small Modal</h3>
+                <button class="modal-close" onclick="closeModal('small-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a small, compact modal dialog.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('small-modal-dialog')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollable Modal -->
+    <div id="scrollable-modal-dialog" class="modal">
+        <div class="modal-content" style="max-height: 80vh;">
+            <div class="modal-header">
+                <h3>Scrollable Modal</h3>
+                <button class="modal-close" onclick="closeModal('scrollable-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This modal has a lot of content to demonstrate scrolling behavior.</p>
+                <div style="height: 1000px; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); padding: 20px; border-radius: 8px;">
+                    <h4>Scrollable Content</h4>
+                    <p>This content area is intentionally long to test scrolling behavior in modals.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                    <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                    <p>Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur?</p>
+                    <p>Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                    <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                    <p>Et harum quidem rerum facilis est et expedita distinctio.</p>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                    <p>Omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                    <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                    <p>End of scrollable content.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('scrollable-modal-dialog')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-dialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button class="modal-close" onclick="closeModal('login-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form" class="form">
+                    <div class="form-group">
+                        <label for="login-email" class="form-label">Email</label>
+                        <input type="email" id="login-email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="form-label">Password</label>
+                        <input type="password" id="login-password" name="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" class="checkbox">
+                            Remember me
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('login-modal-dialog')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitLoginForm()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal-dialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sign Up</h3>
+                <button class="modal-close" onclick="closeModal('signup-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form" class="form">
+                    <div class="form-group">
+                        <label for="signup-name" class="form-label">Full Name</label>
+                        <input type="text" id="signup-name" name="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email" class="form-label">Email</label>
+                        <input type="email" id="signup-email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password" class="form-label">Password</label>
+                        <input type="password" id="signup-password" name="password" class="form-input" placeholder="Enter your password" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" class="checkbox" required>
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('signup-modal-dialog')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitSignupForm()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parent Modal (for nested modals) -->
+    <div id="parent-modal-dialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Parent Modal</h3>
+                <button class="modal-close" onclick="closeModal('parent-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a parent modal. Click the button below to open a nested modal.</p>
+                <button class="btn btn-primary" onclick="openNestedModal()">Open Nested Modal</button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('parent-modal-dialog')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nested Modal -->
+    <div id="nested-modal-dialog" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3>Nested Modal</h3>
+                <button class="modal-close" onclick="closeModal('nested-modal-dialog')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a nested modal opened from within another modal.</p>
+                <p>It should appear on top of the parent modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('nested-modal-dialog')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loading-modal-dialog" class="modal">
+        <div class="modal-content" style="max-width: 300px;">
+            <div class="modal-header">
+                <h3>Loading</h3>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div class="loading-spinner" style="width: 40px; height: 40px; margin: 20px auto;"></div>
+                <p>Please wait while we process your request...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+    <script>
+        // Modal-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Basic modals
+            document.getElementById('simple-modal')?.addEventListener('click', () => openModal('simple-modal-dialog'));
+            document.getElementById('large-modal')?.addEventListener('click', () => openModal('large-modal-dialog'));
+            document.getElementById('small-modal')?.addEventListener('click', () => openModal('small-modal-dialog'));
+            document.getElementById('scrollable-modal')?.addEventListener('click', () => openModal('scrollable-modal-dialog'));
+
+            // Confirmation dialogs
+            document.getElementById('confirm-delete')?.addEventListener('click', () => {
+                if (confirm('Are you sure you want to delete this item?')) {
+                    showAlert('success', 'Item deleted successfully!');
+                }
+            });
+
+            document.getElementById('confirm-save')?.addEventListener('click', () => {
+                if (confirm('Do you want to save your changes?')) {
+                    showAlert('success', 'Changes saved successfully!');
+                }
+            });
+
+            document.getElementById('confirm-discard')?.addEventListener('click', () => {
+                if (confirm('Are you sure you want to discard your changes? This action cannot be undone.')) {
+                    showAlert('warning', 'Changes discarded.');
+                }
+            });
+
+            document.getElementById('confirm-custom')?.addEventListener('click', () => {
+                const result = prompt('Please enter your confirmation message:');
+                if (result) {
+                    showAlert('info', `You entered: ${result}`);
+                }
+            });
+
+            // Form modals
+            document.getElementById('login-modal')?.addEventListener('click', () => openModal('login-modal-dialog'));
+            document.getElementById('signup-modal')?.addEventListener('click', () => openModal('signup-modal-dialog'));
+            document.getElementById('settings-modal')?.addEventListener('click', () => {
+                showAlert('info', 'Settings modal would open here');
+            });
+            document.getElementById('profile-modal')?.addEventListener('click', () => {
+                showAlert('info', 'Profile modal would open here');
+            });
+
+            // Alert modals
+            document.getElementById('success-alert-modal')?.addEventListener('click', () => {
+                showAlert('success', 'This is a success alert modal!');
+            });
+
+            document.getElementById('error-alert-modal')?.addEventListener('click', () => {
+                showAlert('error', 'This is an error alert modal!');
+            });
+
+            document.getElementById('warning-alert-modal')?.addEventListener('click', () => {
+                showAlert('warning', 'This is a warning alert modal!');
+            });
+
+            document.getElementById('info-alert-modal')?.addEventListener('click', () => {
+                showAlert('info', 'This is an info alert modal!');
+            });
+
+            // Nested modals
+            document.getElementById('parent-modal')?.addEventListener('click', () => openModal('parent-modal-dialog'));
+
+            // Dynamic content modals
+            document.getElementById('loading-modal')?.addEventListener('click', () => {
+                openModal('loading-modal-dialog');
+                setTimeout(() => {
+                    closeModal('loading-modal-dialog');
+                    showAlert('success', 'Loading completed!');
+                }, 3000);
+            });
+
+            document.getElementById('api-modal')?.addEventListener('click', async () => {
+                showAlert('info', 'Fetching data...');
+                try {
+                    const response = await fetch('/api/users');
+                    const data = await response.json();
+                    showAlert('success', `Fetched ${data.users.length} users from API`);
+                } catch (error) {
+                    showAlert('error', 'Failed to fetch data');
+                }
+            });
+
+            document.getElementById('timer-modal')?.addEventListener('click', () => {
+                let countdown = 5;
+                const modal = openModal('loading-modal-dialog');
+                const interval = setInterval(() => {
+                    countdown--;
+                    if (countdown <= 0) {
+                        clearInterval(interval);
+                        closeModal('loading-modal-dialog');
+                        showAlert('success', 'Timer completed!');
+                    }
+                }, 1000);
+            });
+        });
+
+        // Modal utility functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openNestedModal() {
+            openModal('nested-modal-dialog');
+        }
+
+        function submitLoginForm() {
+            const form = document.getElementById('login-form');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            if (data.email && data.password) {
+                showAlert('success', 'Login successful!');
+                closeModal('login-modal-dialog');
+                form.reset();
+            } else {
+                showAlert('error', 'Please fill in all required fields');
+            }
+        }
+
+        function submitSignupForm() {
+            const form = document.getElementById('signup-form');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            if (data.name && data.email && data.password && data.terms) {
+                showAlert('success', 'Signup successful!');
+                closeModal('signup-modal-dialog');
+                form.reset();
+            } else {
+                showAlert('error', 'Please fill in all required fields and accept terms');
+            }
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const openModals = document.querySelectorAll('.modal.show');
+                openModals.forEach(modal => {
+                    modal.classList.remove('show');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html> 
